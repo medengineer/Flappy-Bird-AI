@@ -5,6 +5,7 @@ class Player {
     this.y = canvas.height / 2;
     this.velY = 0;
     this.velX = panSpeed;
+    this.flapVelocity = 14;
     this.size = 40;
     this.dead = false;
     this.isOnGround = false;
@@ -134,8 +135,7 @@ class Player {
 
   flap() {
     if (!this.dead && !this.isOnGround) {
-      // this.velY = -35;
-      this.velY = -25;
+      this.velY = -this.flapVelocity;
     }
   }
 

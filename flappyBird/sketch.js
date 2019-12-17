@@ -1,5 +1,5 @@
-var panSpeed = 8;
-var gravity = 3;
+var panSpeed = 3;
+var gravity = 1;
 var player;
 
 var pipes;
@@ -16,19 +16,19 @@ var dieOff = false;
 
 //-------------------------------------------------------------------------------- neat globals
 
-var nextConnectionNo = 1000;
+var nextConnectionNo = 1;
 var population;
 var speed = 60;
 
 var superSpeed = 1;
 var showBest = false; //true if only show the best of the previous generation
 var runBest = false; //true if replaying the best ever game
-var humanPlaying = false; //true if the user is playing
+var humanPlaying = true; //true if the user is playing
 
 var humanPlayer;
 
 
-var showBrain = false;
+var showBrain = true;
 var showBestEachGen = false;
 var upToGen = 0;
 var genPlayerTemp; //player
@@ -36,7 +36,7 @@ var genPlayerTemp; //player
 var showNothing = false;
 
 var randomPipeHeights = [];
-var isChristmas = true;
+var isChristmas = false;
 
 function preload() {
   if (isChristmas) {
@@ -62,13 +62,15 @@ function setup() {
 
   pauseBecauseDead = false;
 
-  population = new Population(1000);
+  population = new Population(1);
   humanPlayer = new Player();
 }
 
 function draw() {
   // background(135, 206, 250);
   drawToScreen();
+  showHumanPlaying();
+  /*
   if (showBestEachGen) { //show the best of each gen
     showBestPlayersForEachGeneration();
   } else if (humanPlaying) { //if the user is controling the ship[
@@ -83,6 +85,7 @@ function draw() {
       population.naturalSelection();
     }
   }
+  */
   // writeInfo();
 }
 //-----------------------------------------------------------------------------------
@@ -131,11 +134,9 @@ function drawToScreen() {
   if (!showNothing) {
     //pretty stuff
     image(backgroundSprite, 0, 0, canvas.width, canvas.height);
-    // showAll();
-    // updateAll();
+    //showAll();
+    //updateAll();
     drawBrain();
-
-
   }
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
