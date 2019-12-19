@@ -54,7 +54,7 @@ function preload() {
 function setup() {
   window.canvas = createCanvas(600, 800);
 
-  player = new Player();
+  //player = new Player();
   // pipes = new PipePair(true);
   // pipes2 = new PipePair(false, pipes);
   // pipes2.setX(1.5 * canvas.width + pipes2.topPipe.width / 2);
@@ -64,6 +64,7 @@ function setup() {
 
   population = new Population(1);
   humanPlayer = new Player();
+  humanPlaying = true;
 }
 
 function draw() {
@@ -114,6 +115,7 @@ function showHumanPlaying() {
     humanPlayer.show();
   } else { //once done return to ai
     humanPlaying = false;
+    setup();
   }
 }
 //-----------------------------------------------------------------------------------
